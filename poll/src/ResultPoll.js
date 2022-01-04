@@ -44,6 +44,7 @@ function ResultPoll() {
           <div className="row g-3">
             {poll !== null && poll.users === 0 && <h1>No data found</h1>}
             {poll !== null &&
+              poll.users !== 0 &&
               poll.data.map((card, i) => {
                 return (
                   <div className=" card col-12">
