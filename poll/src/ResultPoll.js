@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { VictoryPie } from "victory";
 import axios from "axios";
 import "./App.css";
@@ -33,6 +33,10 @@ function ResultPoll() {
     <>
       <div className="App">
         <header className="App-header">
+          <Link to="/" className="btn btn-primary">
+            Return to home
+          </Link>
+          <br />
           <div className="card mb-3">
             <h1 className="card-title">
               {poll !== null ? poll.pollTitle : ""}
@@ -55,6 +59,13 @@ function ResultPoll() {
                       labels={({ datum }) => `${datum.x}: ${datum.y}`}
                       width={900}
                       height={400}
+                      style={{
+                        labels: {
+                          fill: "black",
+                          fontSize: 20,
+                          fontWeight: "bold",
+                        },
+                      }}
                     />
                   </div>
                 );

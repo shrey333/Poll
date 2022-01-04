@@ -24,7 +24,7 @@ function DataTable({ columns, data }) {
 
   return (
     <>
-      <table {...getTableProps()} className="table table-hover">
+      <table {...getTableProps()} className="table table-dark table-hover">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>

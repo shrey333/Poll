@@ -22,9 +22,14 @@ function HomePage() {
         id: "link-for-poll",
         Cell: (row) => (
           <div>
-            <Link to={`/poll/${row.row.original._id}`}>
-              http://localhost:3000/poll/{row.row.original._id}
-            </Link>
+            <input
+              type="text"
+              className="form-control"
+              placeholder=""
+              value={`http://localhost:3001/poll/${row.row.original._id}`}
+              aria-label=""
+              disabled={true}
+            />
           </div>
         ),
       },
@@ -57,10 +62,9 @@ function HomePage() {
         <Link to="/poll/create" className="btn btn-primary">
           Create a Poll
         </Link>
-        <DataTable
-          data={tableData}
-          columns={columns}
-        ></DataTable>
+        <br />
+        <br />
+        <DataTable data={tableData} columns={columns}></DataTable>
       </header>
     </div>
   );

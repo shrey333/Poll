@@ -56,6 +56,8 @@ function CreateForm() {
       .post("http://localhost:3000/polls/create", newFormData)
       .then((res) => {
         setId(res.data._id);
+        setFormData([]);
+        setTitle("");
       });
   };
 
