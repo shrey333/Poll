@@ -13,7 +13,6 @@ function ResultPoll() {
     await axios
       .get(`http://localhost:3000/polls/fetchPoll/${params.id}`)
       .then((res) => {
-        console.log(res.data);
         setPoll(res.data);
         const newData = res.data.data.map((options) => {
           let dum = options.options;
@@ -22,6 +21,7 @@ function ResultPoll() {
           });
         });
         setData(newData);
+        console.log(data);
       });
   };
 
@@ -37,20 +37,23 @@ function ResultPoll() {
             <h1 className="card-title">
               {poll !== null ? poll.pollTitle : ""}
             </h1>
+            <h4 className="card-text">
+              User submitted: {poll !== null ? poll.users : ""}
+            </h4>
           </div>
           <div className="row g-3">
-            {poll.users === 0 && <h1>No data found</h1>}
+            {poll !== null && poll.users === 0 && <h1>No data found</h1>}
             {poll !== null &&
               poll.data.map((card, i) => {
                 return (
                   <div className=" card col-12">
                     <h4 className="card-title">{card.question}</h4>
                     <VictoryPie
-                      padding={{ left: 50, right: 50 }}
+                      padding={{ left: 50, right: 50, top: 50, bottom: 50 }}
                       data={data[i]}
                       labels={({ datum }) => `${datum.x}: ${datum.y}`}
                       width={900}
-                      height={300}
+                      height={400}
                     />
                   </div>
                 );
