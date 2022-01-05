@@ -1,10 +1,26 @@
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function CreateForm() {
-  const [formData, setFormData] = useState([]);
+  const [formData, setFormData] = useState([
+    {
+      question: "",
+      options: [
+        {
+          value: "",
+          votes: 0,
+          isRequired: true,
+        },
+        {
+          value: "",
+          votes: 0,
+          isRequired: true,
+        },
+      ],
+    },
+  ]);
   const [title, setTitle] = useState("");
   const [id, setId] = useState("");
 
@@ -25,7 +41,24 @@ function CreateForm() {
   };
 
   let addNewCard = () => {
-    setFormData([...formData, { question: "", options: [] }]);
+    setFormData([
+      ...formData,
+      {
+        question: "",
+        options: [
+          {
+            value: "",
+            votes: 0,
+            isRequired: true,
+          },
+          {
+            value: "",
+            votes: 0,
+            isRequired: true,
+          },
+        ],
+      },
+    ]);
   };
 
   let removeCard = (i) => {
@@ -45,6 +78,7 @@ function CreateForm() {
     newFormValues[i].options.push({
       value: "",
       votes: 0,
+      isRequired: false,
     });
     setFormData(newFormValues);
   };
@@ -56,7 +90,23 @@ function CreateForm() {
       .post("http://localhost:3000/polls/create", newFormData)
       .then((res) => {
         setId(res.data._id);
-        setFormData([]);
+        setFormData([
+          {
+            question: "",
+            options: [
+              {
+                value: "",
+                votes: 0,
+                isRequired: true,
+              },
+              {
+                value: "",
+                votes: 0,
+                isRequired: true,
+              },
+            ],
+          },
+        ]);
         setTitle("");
       });
   };
@@ -107,13 +157,15 @@ function CreateForm() {
                             />
                           </div>
                           <div className="col-md-4">
-                            <button
-                              className="btn btn-danger"
-                              type="button"
-                              onClick={(e) => removeRadio(i, j)}
-                            >
-                              remove radio
-                            </button>
+                            {!option.isRequired && (
+                              <button
+                                className="btn btn-danger"
+                                type="button"
+                                onClick={(e) => removeRadio(i, j)}
+                              >
+                                remove radio
+                              </button>
+                            )}
                           </div>
                         </>
                       );

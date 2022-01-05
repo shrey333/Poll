@@ -14,6 +14,7 @@ const Poll = new mongoose.Schema({
         {
           value: { type: String }, // to do: change to a list
           votes: { type: Number },
+          isRequired: { type: Boolean },
         },
       ],
     },

@@ -85,6 +85,7 @@ function ShowPoll() {
                               id={`btnradio${i}${j}`}
                               autoComplete="off"
                               onChange={(e) => handleCountChange(i, j, e)}
+                              required={true}
                             />
                             <label
                               className="btn btn-outline-primary"
