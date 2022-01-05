@@ -207,6 +207,10 @@ function CreateForm() {
             </button>
           </form>
           <br />
+          <Link to="/" className="btn btn-primary">
+            Return to home
+          </Link>
+          <br />
           {id !== "" && (
             <>
               <div className="input-group w-50">
@@ -222,9 +226,6 @@ function CreateForm() {
               </div>
               <br />
               {/* <Link to={`/poll/${id}`}>http://localhost:3000/poll/{id}</Link> */}
-              <Link to="/" className="btn btn-primary">
-                Return to home
-              </Link>
             </>
           )}
         </header>
