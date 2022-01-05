@@ -17,6 +17,7 @@ const Poll = new mongoose.Schema({
           isRequired: { type: Boolean },
         },
       ],
+      isRequired: { type: Boolean },
     },
   ],
   // options: [

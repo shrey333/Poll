@@ -7,6 +7,7 @@ function CreateForm() {
   const [formData, setFormData] = useState([
     {
       question: "",
+      isRequired: true,
       options: [
         {
           value: "",
@@ -45,6 +46,7 @@ function CreateForm() {
       ...formData,
       {
         question: "",
+        isRequired: false,
         options: [
           {
             value: "",
@@ -93,6 +95,7 @@ function CreateForm() {
         setFormData([
           {
             question: "",
+            isRequired: true,
             options: [
               {
                 value: "",
@@ -179,14 +182,15 @@ function CreateForm() {
                   >
                     Add new radio
                   </button>
-
-                  <button
-                    className="btn btn-danger"
-                    type="button"
-                    onClick={() => removeCard(i)}
-                  >
-                    remove input
-                  </button>
+                  {!element.isRequired && (
+                    <button
+                      className="btn btn-danger"
+                      type="button"
+                      onClick={() => removeCard(i)}
+                    >
+                      remove input
+                    </button>
+                  )}
                 </div>
               );
             })}
